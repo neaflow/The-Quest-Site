@@ -52,6 +52,18 @@ body {
   border: 1px solid var(--border);
 }
 
+.sidebar-header {
+  flex: 0 0 auto;
+  padding: 20px 24px;
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .sidebar-text {
   flex: 1 1 auto;
   overflow-y: auto;
