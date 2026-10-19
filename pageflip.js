@@ -6,7 +6,7 @@ const pages = [
   "Miss Gilpet goes out to search the road that Mrs. Momeby said she already searched, where she finds Erik playing with dust. She then brings Erik back to the villa.",
   "The baby who was found on the road, percieved to be Erik, wouldn't stop crying and howling, so they try giving him a ride on the garden roller, which the real Erik then pops out of.",
   "The Momebys are relieved to see who is undoubtedly their real son, Erik, but are confused who the other baby from the road is, if not Erik.",
-  "A nursemaid ran over and identified the baby as her own that she was looking after, names little Percy, who had wandered off through the front gate."
+  "A nursemaid ran over and identified the baby as her own that she was looking after, named little Percy, who had wandered off through the front gate."
 ];
 
 let current = 0;

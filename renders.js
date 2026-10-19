@@ -2,7 +2,7 @@
 
 
 const MEDIA_DIR = "media/";
-const MEDIA_VERSION = "2";
+const MEDIA_VERSION = "3";
 
 const ASSET_NAMES = [
   "bg-1", "bg-2", "bg-3", "bg-4", "bg-5", "bg-6", "bg-7",
@@ -25,7 +25,7 @@ const ASSET_NAMES = [
   "arms-cradle", "garden-roller", "pop-burst", "fence-7", "dust-puff",
   "buttercup",
   "label-mr-momeby", "label-mrs-momeby", "label-clovis", "label-miss-gilpet",
-  "label-erik", "label-erik-quoted", "label-percy", "label-nursemaid",
+  "label-erik", "label-erik-quoted", "label-percy", "label-unknown", "label-nursemaid",
   "bubble-1", "bubble-2", "bubble-3", "bubble-4", "bubble-5", "bubble-6",
   "bubble-7",
 ];
@@ -332,7 +332,7 @@ function drawPage5() {
   putLabel("label-mr-momeby", W * 0.15, H * 0.95);
   putLabel("label-mrs-momeby", W * 0.32, H * 0.982);
   putLabel("label-erik", popX, H * 0.855);
-  putLabel("label-percy", rx + rw * 0.57, H * 0.855);
+  putLabel("label-unknown", rx + rw * 0.57, H * 0.855);
   putFull("bubble-5");
 }
 
@@ -360,7 +360,7 @@ function drawPage6() {
   putLabel("label-mr-momeby", W * 0.63, H * 0.978);
 
   putCharacter(W * 0.78, H * 0.92, H * 0.24, "body-baby-sit-up", "head-baby-open");
-  putLabel("label-percy", W * 0.78, H * 0.975);
+  putLabel("label-unknown", W * 0.78, H * 0.975);
   putFull("bubble-6");
 }
 
