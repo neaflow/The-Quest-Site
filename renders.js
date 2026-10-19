@@ -1,24 +1,5 @@
-/* ==========================================================================
-   renders.js
-   The Quest scene renderer.
+// 1. Asset loading
 
-   Every drawing is now a pre-made PNG in /media. Each page is composed by
-   placing those PNGs in order, back to front. Nothing is drawn with vector
-   logic any more; this file only positions images.
-
-   Asset conventions:
-     - Character sheets are 1400x1500, feet at (700,1400), drawn at a
-       canonical height of 1000. A body sheet and a head sheet share the
-       same canvas, so drawing body then head rebuilds the character.
-     - House sheets are 1200x1400, with the wall's top-left at (100,600)
-       and the wall itself 1000x800.
-     - Backgrounds, paths and speech bubbles are 2000x1600 full-scene sheets.
-     - Labels keep their natural size and are scaled by the scene height.
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. Asset loading
-   -------------------------------------------------------------------------- */
 
 const MEDIA_DIR = "media/";
 const MEDIA_VERSION = "2";
@@ -74,9 +55,8 @@ if (typeof window !== "undefined" && typeof Image !== "undefined") {
   });
 }
 
-/* --------------------------------------------------------------------------
-   2. Placement helpers
-   -------------------------------------------------------------------------- */
+// 2. Placement helpers
+
 
 const CHAR_SHEET_W = 1400;
 const CHAR_SHEET_H = 1700;
@@ -251,9 +231,7 @@ function putLabel(name, x, y) {
   put(name, x - w / 2, y - h / 2, w, h);
 }
 
-/* --------------------------------------------------------------------------
-   3. Pages
-   -------------------------------------------------------------------------- */
+// 3. pages
 
 const SCENES = [drawPage1, drawPage2, drawPage3, drawPage4, drawPage5, drawPage6, drawPage7];
 
@@ -416,9 +394,7 @@ function drawPage7() {
   putFull("bubble-7");
 }
 
-/* --------------------------------------------------------------------------
-   4. Entry point
-   -------------------------------------------------------------------------- */
+// 4. entry
 
 const REVEAL_MS = 1000;
 const RISE_FRACTION = 0.035;
