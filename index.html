@@ -14,9 +14,24 @@
     <aside class="sidebar-column">
       <div class="sidebar">
         <header class="sidebar-header">The Quest Remediation</header>
-        <div class="sidebar-text">
+        <div class="sidebar-text" id="sidebar-text">
           <p class="page-text" id="page-text"></p>
+          <section class="quote-stack" id="quote-stack" aria-label="Quotes from the story">
+            <blockquote class="quote-card">
+              <p class="quote-text"><q class="quote-content"></q> (<span class="quote-page"></span>)</p>
+            </blockquote>
+            <blockquote class="quote-card">
+              <p class="quote-text"><q class="quote-content"></q> (<span class="quote-page"></span>)</p>
+            </blockquote>
+            <blockquote class="quote-card">
+              <p class="quote-text"><q class="quote-content"></q> (<span class="quote-page"></span>)</p>
+            </blockquote>
+          </section>
         </div>
+        <button class="scroll-hint" id="scroll-hint" type="button" aria-controls="sidebar-text" hidden>
+          <span class="scroll-hint-arrow" aria-hidden="true">↓</span>
+          <span class="scroll-hint-label">Scroll for more</span>
+        </button>
         <div class="page-counter" id="page-counter"></div>
       </div>
       <nav class="sidebar-nav">

@@ -419,8 +419,23 @@ function drawEntry(entry, alpha = 1, dy = 0) {
   sceneCtx.globalAlpha = 1;
 }
 
-function drawQuestScene(ctx, width, height, pageIndex, animate = true) {
-  if (!assetsLoaded) return false;
+function setQuoteProgress(element, progress, rise) {
+  if (progress <= 0) {
+    element.style.opacity = "0";
+    element.style.transform = `translateY(${rise}px)`;
+    return;
+  }
+
+  const eased = progress >= 1 ? 1 : 1 - Math.pow(1 - progress, 3);
+  element.style.opacity = String(eased);
+  element.style.transform = `translateY(${(1 - eased) * rise}px)`;
+}
+
+function drawQuestScene(ctx, width, height, pageIndex, animate = true, quoteElements = []) {
+  if (!assetsLoaded) {
+    quoteElements.forEach((element) => setQuoteProgress(element, 0, height * RISE_FRACTION));
+    return false;
+  }
 
   stopAnimation();
   sceneCtx = ctx;
@@ -449,19 +464,21 @@ function drawQuestScene(ctx, width, height, pageIndex, animate = true) {
   ctx.clearRect(0, 0, width, height);
   drawStatic();
 
-  if (!animate || animatedEntries.length === 0 || typeof requestAnimationFrame !== "function") {
+  if (!animate || (animatedEntries.length === 0 && quoteElements.length === 0) || typeof requestAnimationFrame !== "function") {
     animatedEntries.forEach((entry) => drawEntry(entry, 1, 0));
+    quoteElements.forEach((element) => setQuoteProgress(element, 1, 0));
     return true;
   }
 
   /* Each sprite fades in and rises into place, one starting after the
      other, with the whole sequence finishing in REVEAL_MS. */
   const token = animationToken;
-  const count = animatedEntries.length;
+  const count = animatedEntries.length + quoteElements.length;
   const perSprite =
     count <= 1 ? REVEAL_MS : Math.min(300, Math.max(160, (REVEAL_MS / count) * 2.5));
   const spacing = count <= 1 ? 0 : (REVEAL_MS - perSprite) / (count - 1);
   const rise = height * RISE_FRACTION;
+  quoteElements.forEach((element) => setQuoteProgress(element, 0, rise));
   const start = performance.now();
 
   const drawFrame = (elapsed) => {
@@ -471,7 +488,11 @@ function drawQuestScene(ctx, width, height, pageIndex, animate = true) {
       const progress = (elapsed - i * spacing) / perSprite;
       if (progress <= 0) continue;
       const eased = progress >= 1 ? 1 : 1 - Math.pow(1 - progress, 3);
-      drawEntry(animatedEntries[i], eased, (1 - eased) * rise);
+      if (i < animatedEntries.length) {
+        drawEntry(animatedEntries[i], eased, (1 - eased) * rise);
+      } else {
+        setQuoteProgress(quoteElements[i - animatedEntries.length], progress, rise);
+      }
     }
   };
 
